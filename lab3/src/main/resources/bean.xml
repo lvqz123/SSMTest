@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--把对象的创建交给spring来管理-->
+    <!--spring对bean的管理细节
+        1.创建bean的三种方式
+        2.bean对象的作用范围
+        3.bean对象的生命周期
+    -->
+
+    <!--创建bean的三种方式-->
+    <!--第一种方式：使用默认构造函数创建。
+           在spring的配置文件中使用bean标签，配以id和class属性之后，且没有其他属性和标签时。
+           采用的就是默认构造函数创建bean对象，此时如果类中没有默认构造函数，对象无法创建。
+    -->
+    <!--<bean id="accountService" class="com.lvqz.spring.lab3.service.impl.AccountServiceImpl"></bean>-->
+
+    <!--第二种方式：使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）
+    <bean id="instancetory" class="com.lvqz.spring.lab3.factory.Instancetory"></bean>
+    <bean id="accountService" factory-bean="instancetory" factory-method="getAccountService"></bean>
+    -->
+
+    <!--第三种方式：使用普通工厂中的静态方法创建对象-->
+    <!--<bean id="accountService" class="com.lvqz.spring.lab3.factory.StaticInstancetory" factory-method="getAccountService"></bean>-->
+
+    <!--bean的作用范围
+        bean标签的scope属性：
+            作用：用于指定bean的作用范围
+            取值：
+                 singleton: 单例模式 （只创建一个对象）  默认是单例的
+                 prototype: 多例模式 （创建多个对象）
+                 request: 作用于web应用的请求范围
+                 session: 作用于web应用的会话范围
+                 global-session: 作用于集群环境的会话范围（全局会话范围）
+    -->
+    <!--<bean id="accountService" class="com.lvqz.spring.lab3.service.impl.AccountServiceImpl"></bean>-->
+
+    <!--bean的生命周期
+        单例模式：
+            出生：当容器创建时对象出生
+            活着：只要容器还在，对象就一直存在
+            死亡：容器销毁，对象死亡
+        多例对象：
+            出生：当我们使用对象时，由spring容器为我们创建
+            活着：对象在使用过程中，就会一直活着
+            死亡：对象长时间不使用之后，且没有其他对象引用，由Java中的垃圾回收机制回收
+    -->
+    <bean id="accountService" class="com.lvqz.spring.lab3.service.impl.AccountServiceImpl" init-method="init" destroy-method="destory" scope="prototype"></bean>
+
+
+</beans>
