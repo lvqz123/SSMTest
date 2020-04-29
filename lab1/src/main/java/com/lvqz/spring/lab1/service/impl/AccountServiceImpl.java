@@ -12,9 +12,9 @@ import com.lvqz.spring.lab1.service.IAccountService;
 public class AccountServiceImpl implements IAccountService {
 
 //    private IAccountDao ad = new AccountDaoImpl();
-      //通过工厂创建bean对象
+      //閫氳繃宸ュ巶鍒涘缓bean瀵硅薄
       private IAccountDao ad = (IAccountDao) BeanFactory.getBean("accountDao");
-    //实现保存账户方法
+    //瀹炵幇淇濆瓨璐︽埛鏂规硶
     public void saveAccount() {
         ad.saveAccount();
     }

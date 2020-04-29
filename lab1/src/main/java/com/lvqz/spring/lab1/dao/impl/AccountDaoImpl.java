@@ -9,10 +9,10 @@ import com.lvqz.spring.lab1.dao.IAccountDao;
  */
 public class AccountDaoImpl implements IAccountDao {
 
-    //±£´æÓÃ»§µÄ·½·¨
+    //ä¿å­˜ç”¨æˆ·çš„æ–¹æ³•
     public void saveAccount() {
 
-        System.out.println("±£´æÓÃ»§£¡£¡");
+        System.out.println("ä¿å­˜ç”¨æˆ·ï¼ï¼");
 
     }
 }

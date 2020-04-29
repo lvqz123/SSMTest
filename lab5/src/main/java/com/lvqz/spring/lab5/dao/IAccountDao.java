@@ -1,4 +1,4 @@
-package com.lvqz.spring.lab1.dao;
+package com.lvqz.spring.lab5.dao;
 
 /**
  * @author: 61681

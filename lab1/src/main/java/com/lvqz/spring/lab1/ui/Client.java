@@ -8,7 +8,7 @@ import com.lvqz.spring.lab1.service.IAccountService;
  * @date: 2020/4/27
  * @time: 21:54
  *
- * 模拟一个表现层，用于调用业务层
+ * 妯℃嫙涓�涓〃鐜板眰锛岀敤浜庤皟鐢ㄤ笟鍔″眰
  *
  */
 public class Client {

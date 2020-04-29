@@ -13,9 +13,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class AccountServiceImpl implements IAccountService {
 
-    private IAccountDao ad = new AccountDaoImpl();
+    private IAccountDao ad;
 //    ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
 //     IAccountDao ad = (IAccountDao) new ClassPathXmlApplicationContext("bean.xml").getBean("accountDao");
+
+
+    public void setAd(IAccountDao ad) {
+        this.ad = ad;
+    }
 
     public AccountServiceImpl(){
 

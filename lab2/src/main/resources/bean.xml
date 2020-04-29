@@ -4,7 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="accountService" class="com.lvqz.spring.lab2.service.impl.AccountServiceImpl"></bean>
+    <bean id="accountService" class="com.lvqz.spring.lab2.service.impl.AccountServiceImpl">
+        <property name="ad" ref="accountDao"></property>
+    </bean>
     <bean id="accountDao" class="com.lvqz.spring.lab2.dao.impl.AccountDaoImpl"></bean>
 
 </beans>
