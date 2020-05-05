@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.lvqz.spring.lab9"></context:component-scan>
+
+    <!--配置service-->
+    <bean id="accountService" class="com.lvqz.spring.lab9.service.Impl.AccountServiceImpl">
+        <!--注入dao-->
+        <property name="accountDao" ref="accountDao"></property>
+        <!--注入事务管理-->
+        <property name="transactionManager" ref="transactionManager"></property>
+
+    </bean>
+
+    <!--配置dao-->
+    <bean id="accountDao" class="com.lvqz.spring.lab9.dao.Impl.AccountDaoImpl">
+        <!--注入queryRunner-->
+        <property name="queryRunner" ref="queryRunner"></property>
+        <!--注入connection-->
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <!--配置queryRunner-->
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"></bean>
+
+    <!--配置数据源-->
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://47.95.239.50:3306/ssmTest"></property>
+        <property name="user" value="lvqz"></property>
+        <property name="password" value="lvqz1726"></property>
+    </bean>
+
+    <!--配置ConnectionUtils-->
+    <bean id="connectionUtils" class="com.lvqz.spring.lab9.utils.ConnectionUtils">
+        <property name="dataSource" ref="datasource"></property>
+    </bean>
+
+    <!--配置事务管理TransactionManager-->
+    <bean id="transactionManager" class="com.lvqz.spring.lab9.utils.TransactionManager">
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+
+
+
+</beans>
