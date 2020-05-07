@@ -82,7 +82,7 @@ public class AccountDaoImpl implements IAccountDao {
                 return  null;
             }
             if (querys.size()>1){
-                throw new RuntimeException("结果集不唯一，数据有误！");
+                throw new RuntimeException("缁撴灉闆嗕笉鍞竴锛屾暟鎹湁璇紒");
             }
 
         } catch (SQLException e) {

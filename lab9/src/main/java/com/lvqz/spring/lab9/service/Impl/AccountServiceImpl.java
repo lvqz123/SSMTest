@@ -16,149 +16,53 @@ public class AccountServiceImpl implements IAccountService {
 
     private IAccountDao accountDao;
 
-    //»ñÈ¡ÊÂÎñ¹ÜÀí¶ÔÏó
+    //é€šè¿‡ä»£ç†å¯¹è±¡æ¥æ§åˆ¶äº‹åŠ¡ï¼Œè¿™é‡Œå°±ä¸éœ€è¦äº†
+   /* //è·å–äº‹åŠ¡ç®¡ç†å¯¹è±¡
     private TransactionManager transactionManager;
 
     public void setTransactionManager(TransactionManager transactionManager) {
         this.transactionManager = transactionManager;
-    }
+    }*/
 
     public void setAccountDao(IAccountDao accountDao) {
         this.accountDao = accountDao;
     }
 
     public List<Account> findAllAccount() {
-        try {
-            //1.¿ªÆôÊÂÎñ
-            transactionManager.beginTransaction();
-            //2.Ö´ĞĞ²Ù×÷
-            List<Account> allAccount = accountDao.findAllAccount();
-            //3.Ìá½»ÊÂÎñ
-            transactionManager.commit();
-            //4.·µ»Ø½á¹û
-            return allAccount;
-        } catch (Exception e) {
-            //5.»Ø¹ö²Ù×÷
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            //6.ÊÍ·ÅÁ¬½Ó
-            transactionManager.release();
-        }
+            return accountDao.findAllAccount();
     }
 
     public Account findOneAccount(Integer accoutId) {
-        try {
-        //1.¿ªÆôÊÂÎñ
-        transactionManager.beginTransaction();
-        //2.Ö´ĞĞ²Ù×÷
-        Account account = accountDao.findOneAccount(accoutId);
-        //3.Ìá½»ÊÂÎñ
-        transactionManager.commit();
-        //4.·µ»Ø½á¹û
-        return account;
-        } catch (Exception e) {
-            //5.»Ø¹ö²Ù×÷
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            //6.ÊÍ·ÅÁ¬½Ó
-            transactionManager.release();
-        }
+            return accountDao.findOneAccount(accoutId);
     }
 
     public void insertAccount(Account account) {
-        try {
-            //1.¿ªÆôÊÂÎñ
-            transactionManager.beginTransaction();
-            //2.Ö´ĞĞ²Ù×÷
             accountDao.insertAccount(account);
-            //3.Ìá½»ÊÂÎñ
-            transactionManager.commit();
-        } catch (Exception e) {
-            //5.»Ø¹ö²Ù×÷
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            //6.ÊÍ·ÅÁ¬½Ó
-            transactionManager.release();
-        }
-
     }
 
     public void updateAccount(Account account) {
-        try {
-            //1.¿ªÆôÊÂÎñ
-            transactionManager.beginTransaction();
-            //2.Ö´ĞĞ²Ù×÷
             accountDao.updateAccount(account);
-            //3.Ìá½»ÊÂÎñ
-            transactionManager.commit();
-        } catch (Exception e) {
-            //5.»Ø¹ö²Ù×÷
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            //6.ÊÍ·ÅÁ¬½Ó
-            transactionManager.release();
-        }
-
     }
 
     public void deleteAccount(Integer accountId) {
-        try {
-            //1.¿ªÆôÊÂÎñ
-            transactionManager.beginTransaction();
-            //2.Ö´ĞĞ²Ù×÷
             accountDao.deleteAccount(accountId);
-            //3.Ìá½»ÊÂÎñ
-            transactionManager.commit();
-        } catch (Exception e) {
-            //5.»Ø¹ö²Ù×÷
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            //6.ÊÍ·ÅÁ¬½Ó
-            transactionManager.release();
-        }
-
     }
 
     public void transferAccount(String sourceName, String targetName, Float money) {
-
-        try {
-            //1.¿ªÆôÊÂÎñ
-            transactionManager.beginTransaction();
-            //2.Ö´ĞĞ²Ù×÷
-
-            //2.1¸ù¾İÃû×Ö»ñÈ¡×ªÕËÕË»§
+            //2.1æ ¹æ®åå­—è·å–è½¬è´¦è´¦æˆ·
             Account source = accountDao.findAccountByName(sourceName);
-            //2.2¸ù¾İÃû×Ö»ñÈ¡ÊÕÇ®ÕË»§
+            //2.2æ ¹æ®åå­—è·å–æ”¶é’±è´¦æˆ·
             Account target = accountDao.findAccountByName(targetName);
-            //2.3×ªÕËÕË»§¼õÈ¥Ç®
+            //2.3è½¬è´¦è´¦æˆ·å‡å»é’±
             source.setMoney(source.getMoney() - money);
-            //2.4ÊÕÇ®ÕË»§¼ÓÇ®
+            //2.4æ”¶é’±è´¦æˆ·åŠ é’±
             target.setMoney(target.getMoney()+ money);
-            //2.5¸üĞÂ×ªÕËÕË»§
+            //2.5æ›´æ–°è½¬è´¦è´¦æˆ·
             accountDao.updateAccount(source);
+            //å‡å¦‚åœ¨æ›´æ–°è´¦æˆ·çš„æ—¶å€™å‡ºç°é—®é¢˜ï¼Œæ¨¡æ‹Ÿä¸€ä¸ªæ•…éšœå¯¼è‡´ä¸­é€”æŠ¥é”™(è¿™æ ·å°±å¯¼è‡´aaaé’±å°‘äº†ï¼Œä½†æ˜¯bbbä¹Ÿæ²¡æ”¶åˆ°é’± å·²ç»å±äºäº‹æ•…äº†ã€‚)
+//            int i = 1/0;
 
-            //¼ÙÈçÔÚ¸üĞÂÕË»§µÄÊ±ºò³öÏÖÎÊÌâ£¬Ä£ÄâÒ»¸ö¹ÊÕÏµ¼ÖÂÖĞÍ¾±¨´í(ÕâÑù¾Íµ¼ÖÂaaaÇ®ÉÙÁË£¬µ«ÊÇbbbÒ²Ã»ÊÕµ½Ç® ÒÑ¾­ÊôÓÚÊÂ¹ÊÁË¡£)
-            int i = 1/0;
-
-            //2.6¸üĞÂÊÕÇ®ÕË»§
+            //2.6æ›´æ–°æ”¶é’±è´¦æˆ·
             accountDao.updateAccount(target);
-
-            //3.Ìá½»ÊÂÎñ
-            transactionManager.commit();
-        } catch (Exception e) {
-            //5.»Ø¹ö²Ù×÷
-            transactionManager.rollback();
-            throw new RuntimeException(e);
-        } finally {
-            //6.ÊÍ·ÅÁ¬½Ó
-            transactionManager.release();
-        }
-
-
     }
 }

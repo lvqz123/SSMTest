@@ -3,11 +3,11 @@ package com.lvqz.spring.lab9.utils;
 import java.sql.SQLException;
 
 /**
- * @author: ÂÀÇïÛÚ
+ * @author: å•ç§‹åœ³
  * @date: 2020/5/3
  * @time: 12:22
  *
- * ºÍÊÂÎñ¹ÜÀíÏà¹ØµÄ¹¤¾ßÀà£¬Ëû°üº¬ÁË¿ªÆôÊÂÎñ¡¢Ìá½»ÊÂÎñ¡¢»Ø¹öÊÂÎñ¡¢¹Ø±ÕÁ¬½Ó
+ * å’Œäº‹åŠ¡ç®¡ç†ç›¸å…³çš„å·¥å…·ç±»ï¼Œä»–åŒ…å«äº†å¼€å¯äº‹åŠ¡ã€æäº¤äº‹åŠ¡ã€å›æ»šäº‹åŠ¡ã€å…³é—­è¿æ¥
  *
  */
 public class TransactionManager {
@@ -20,7 +20,7 @@ public class TransactionManager {
     }
 
     /**
-     * ¿ªÆôÊÂÎñ
+     * å¼€å¯äº‹åŠ¡
      */
     public void beginTransaction(){
         try {
@@ -31,7 +31,7 @@ public class TransactionManager {
     }
 
     /**
-     * Ìá½»ÊÂÎñ
+     * æäº¤äº‹åŠ¡
      */
     public void commit(){
         try {
@@ -42,7 +42,7 @@ public class TransactionManager {
     }
 
     /**
-     * »Ø¹öÊÂÎñ
+     * å›æ»šäº‹åŠ¡
      */
     public void rollback(){
         try {
@@ -53,7 +53,7 @@ public class TransactionManager {
     }
 
     /**
-     * ÊÍ·ÅÁ¬½Ó
+     * é‡Šæ”¾è¿æ¥
      */
     public void release(){
         try {

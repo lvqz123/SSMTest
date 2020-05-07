@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * @author: ÂÀÇïÛÚ
+ * @author: å•ç§‹åœ³
  * @date: 2020/5/3
  * @time: 12:13
  */
@@ -21,24 +21,24 @@ public class ConnectionUtils {
     public Connection getThreadConnection(){
         Connection conn = null;
         try {
-            //1.ÏÈ´ÓThreadLocalÉÏ»ñÈ¡
+            //1.å…ˆä»ThreadLocalä¸Šè·å–
             conn = tl.get();
-            //2.ÅĞ¶Ïµ±Ç°Ïß³ÌÊÇ·ñÓĞÁ¬½Ó
+            //2.åˆ¤æ–­å½“å‰çº¿ç¨‹æ˜¯å¦æœ‰è¿æ¥
             if (conn == null){
-                //3.´ÓÊı¾İÔ´ÖĞ»ñÈ¡Ò»¸öÁ¬½Ó£¬²¢ÇÒ´æÈëThreadLocal
+                //3.ä»æ•°æ®æºä¸­è·å–ä¸€ä¸ªè¿æ¥ï¼Œå¹¶ä¸”å­˜å…¥ThreadLocal
                 conn = dataSource.getConnection();
                 tl.set(conn);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //·µ»Øµ±Ç°Ïß³ÌµÄÁ¬½Ó
+        //è¿”å›å½“å‰çº¿ç¨‹çš„è¿æ¥
         return conn;
     }
 
 
     /**
-     * °ÑÁ¬½ÓºÍÏß³Ì½â°ó
+     * æŠŠè¿æ¥å’Œçº¿ç¨‹è§£ç»‘
      */
     public void removeConnection(){
         tl.remove();
