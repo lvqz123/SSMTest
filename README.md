@@ -8,13 +8,20 @@ lab1：手撕一个简单的IOC容器框架，引申到IOC概念更容易理解
 
 lab2：开始使用SpringIOC，例子通过加载IOC容器来加载Bean，ApplicationContext和BeanFactory的区别
 
-lab3:创建Bean的三种方式，Bean的作用范围scope,Bean的生命周期
+lab3：创建Bean的三种方式，Bean的作用范围scope,Bean的生命周期
 
-lab4：**何为依赖注入？** 
+lab4：**`何为依赖注入？`** 
 
 依赖注入的几种方式：
 1. 通过构造方法注入
 2. 通过set方法注入
-3. 复杂类型注入
+3. 复杂类型/集合类型注入
+
+lab5：Spring常用注解，使用注解改写lab4案例
+
+lab6：结合dbutil的Spring纯xml格式编写案例
+
+lab7：在lab6的基础上使用注解改造（）
+
 
 
