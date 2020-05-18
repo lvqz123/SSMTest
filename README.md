@@ -21,7 +21,16 @@ lab5：Spring常用注解，使用注解改写lab4案例
 
 lab6：结合dbutil的Spring纯xml格式编写案例
 
-lab7：在lab6的基础上使用注解改造（）
+lab7：在lab6的基础上使用注解改造（遗留一些问题，部分配置无法转换成注解）
+
+lab8：解决lab7留下的问题，发现几个新的注解Configuration、ComponentScan、Bean、Import、PropertySource
+，将案例改造为纯注解格式。
+
+lab9：为每个，通过事务和动态代理打开AOP思想的理解（学习lab10之后）
+
+lab10：通过案例理解cglib动态代理和jdk的动态代理
+
+lab11：AOP通过xml配置案例
 
 
 
