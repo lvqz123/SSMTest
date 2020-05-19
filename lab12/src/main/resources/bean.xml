@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--配置Service-->
+    <bean id="accountService" class="com.lvqz.lab12.service.impl.AccountServiceImpl"></bean>
+
+    <!--配置Logger-->
+    <bean id="logger" class="com.lvqz.lab12.util.Logger"></bean>
+
+    <aop:config>
+        <aop:aspect id="logAdvice" ref="logger">
+            <aop:pointcut id="logPointcut" expression="execution( * com.lvqz.lab12.service.impl.*.*(..))"></aop:pointcut>
+            <!--<aop:before method="printLog" pointcut="execution(public void com.lvqz.lab11.service.impl.AccountServiceImpl.saveAccount())"></aop:before>-->
+
+            <!--全通配写法-->
+            <!--<aop:before method="printLog" pointcut="execution( * *..*.*(..))"></aop:before>-->
+
+            <!--通常写法（业务类全支持，而不是项目中所有的类都被加上）-->
+            <!--前置通知-->
+            <!--<aop:before method="beforePrintLog" pointcut-ref="logPointcut"></aop:before>-->
+            <!--后置通知-->
+            <!--<aop:after-returning method="afterReturningPrintLog" pointcut-ref="logPointcut"></aop:after-returning>-->
+            <!--异常通知-->
+            <!--<aop:after-throwing method="afterThrowingPringLog" pointcut-ref="logPointcut"></aop:after-throwing>-->
+            <!--最终通知-->
+            <!--<aop:after method="afterPrintLog" pointcut-ref="logPointcut"></aop:after>-->
+            <!--环绕通知,具体笔记看Logger类中-->
+            <aop:around method="aroundPrintLog" pointcut-ref="logPointcut"></aop:around>
+
+            <!--提取切入点，如果在当前切面中定义，只能作用于当前切面-->
+            <!--<aop:pointcut id="logPointcut" expression="execution( * com.lvqz.lab12.service.impl.*.*(..))"></aop:pointcut>-->
+        </aop:aspect>
+        <!--如果定义到外面，则可以作用到所有切面，但是，注意顺序，此处是报错的，全局定义切入点需要将定义放在最开始位置-->
+        <!--<aop:pointcut id="logPointcut" expression="execution( * com.lvqz.lab12.service.impl.*.*(..))"></aop:pointcut>-->
+    </aop:config>
+
+</beans>

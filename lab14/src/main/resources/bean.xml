@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.lvqz.spring.lab14"></context:component-scan>
+
+    <!--开启SpringAOP注解支持-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
+    <!--配置queryRunner-->
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"></bean>
+
+    <!--配置数据源-->
+    <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://47.95.239.50:3306/ssmTest"></property>
+        <property name="user" value="lvqz"></property>
+        <property name="password" value="lvqz1726"></property>
+    </bean>
+
+    <!--<bean id="connection" class="com.lvqz.spring.lab14.utils.ConnectionUtils">-->
+        <!--<property name="dataSource" ref="datasource"></property>-->
+    <!--</bean>-->
+
+    <!--使用SpringAOP实现事务管理-->
+
+    <bean id="transactionManager" class="com.lvqz.spring.lab14.utils.TransactionManager"></bean>
+
+    <aop:config>
+        <aop:pointcut id="pt1" expression="execution(* com.lvqz.spring.lab14.service.Impl.*.*(..))"></aop:pointcut>
+        <aop:aspect id="transactionAdvice" ref="transactionManager">
+            <aop:before method="beginTransaction" pointcut-ref="pt1"></aop:before>
+            <aop:after-returning method="commit" pointcut-ref="pt1"></aop:after-returning>
+            <aop:after-throwing method="rollback" pointcut-ref="pt1"></aop:after-throwing>
+            <aop:after method="release" pointcut-ref="pt1"></aop:after>
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>

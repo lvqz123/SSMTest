@@ -32,5 +32,11 @@ lab10：通过案例理解cglib动态代理和jdk的动态代理
 
 lab11：AOP通过xml配置案例
 
+lab12：通知类型案例
+
+lab13: AOP通过纯注解方式配置案例
+
+lab14：使用SpringAOP修改lab9
+
 
 
