@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lab16</artifactId>
+    <artifactId>lab17</artifactId>
+
 
     <dependencies>
 
@@ -68,7 +69,5 @@
         </dependency>
 
     </dependencies>
-
-
 
 </project>
