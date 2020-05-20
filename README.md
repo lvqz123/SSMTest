@@ -38,5 +38,7 @@ lab13: AOP通过纯注解方式配置案例
 
 lab14：使用SpringAOP修改lab9
 
+lab15:关于JdbcTemplate的使用（了解掌握即可）
+
 
 
