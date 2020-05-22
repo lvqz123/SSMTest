@@ -34,11 +34,17 @@ lab11：AOP通过xml配置案例
 
 lab12：通知类型案例
 
-lab13: AOP通过纯注解方式配置案例
+lab13： AOP通过纯注解方式配置案例
 
 lab14：使用SpringAOP修改lab9
 
-lab15:关于JdbcTemplate的使用（了解掌握即可）
+lab15：关于JdbcTemplate的使用（了解掌握即可）
+
+lab16：使用xml配置Spring事务
+
+lab17：使用注解配置Spring事务
+
+lab18：使用纯注解改造事务案例，顺便回顾注解的知识点
 
 
 
