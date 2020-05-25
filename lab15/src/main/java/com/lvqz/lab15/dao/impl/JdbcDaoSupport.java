@@ -23,7 +23,7 @@ public class JdbcDaoSupport {
     public JdbcTemplate getJdbcTemplate() { return jdbcTemplate;}
 
     //那么可以在重复代码中放JdbcTemplate，那么可不可以放一个DataSource？
-    //这样的话，由于DaoImpl继承了此类，那么相当于DaoImpl中也有了setDataSource方法，那么bean中就不再往Dao中注入JdbcTemplate，直接注入这个setDataSource
+    //这样的话，由于DaoImpl继承了此类，那么相当于DaoImpl中也有了setDataSource方法，那么bean中就不再往Dao中注入JdbcTemplate，直接注入这个setDataSource就相当于有了jdbcTemplate
     public void setDataSource(DataSource dataSource){
         if (jdbcTemplate == null){
             jdbcTemplate = createJdbcTemplate(dataSource);
