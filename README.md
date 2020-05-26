@@ -2,9 +2,14 @@
 
 >目前正在系统复习整理Mybatis相关内容
 
-**lab1-lab19为Spring相关内容
+lab1-lab19为Spring相关内容
 
-lab20-为Mybatis相关内容**
+lab20-为Mybatis相关内容
+
+**Spring:**
+   
+    配置文件中数据库相关信息为防止被黑，已经进行脱敏。
+    导入项目后进行自行配置，Spring练习所用的sql为：account-Spring
 
 lab1：手撕一个简单的IOC容器框架，引申到IOC概念更容易理解
 
