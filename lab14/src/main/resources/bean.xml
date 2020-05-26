@@ -22,9 +22,9 @@
     <!--配置数据源-->
     <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://47.95.239.50:3306/ssmTest"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://"></property>
         <property name="user" value="lvqz"></property>
-        <property name="password" value="lvqz1726"></property>
+        <property name="password" value=""></property>
     </bean>
 
     <!--<bean id="connection" class="com.lvqz.spring.lab14.utils.ConnectionUtils">-->

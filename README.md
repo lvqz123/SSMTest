@@ -1,8 +1,10 @@
 此项目是用来系统复习Spring、SpringMVC、Mybatis知识点，请结合笔记食用
 
->目前正在系统复习整理Spring相关内容
+>目前正在系统复习整理Mybatis相关内容
 
-lab1-为Spring相关内容
+**lab1-lab19为Spring相关内容
+
+lab20-为Mybatis相关内容**
 
 lab1：手撕一个简单的IOC容器框架，引申到IOC概念更容易理解
 

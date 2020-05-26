@@ -14,9 +14,9 @@ public class JdbcTemplateDemo01 {
         //3.准备数据源，spring的内置数据源
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://47.95.239.50:3306/ssmTest");
+        ds.setUrl("jdbc:mysql://");
         ds.setUsername("lvqz");
-        ds.setPassword("lvqz1726");
+        ds.setPassword("");
 
 
 

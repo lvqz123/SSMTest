@@ -18,9 +18,9 @@
     <!--配置数据源-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://47.95.239.50:3306/ssmTest"></property>
+        <property name="url" value="jdbc:mysql://"></property>
         <property name="username" value="lvqz"></property>
-        <property name="password" value="lvqz1726"></property>
+        <property name="password" value=""></property>
     </bean>
 
     <!-- spring中基于XML的声明式事务控制配置步骤
