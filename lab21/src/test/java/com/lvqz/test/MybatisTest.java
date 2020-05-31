@@ -41,13 +41,15 @@ public class MybatisTest {
             e.printStackTrace();
         } finally {
             sqlSession.close();
-            if( in != null) {
+
+            if( in != null){
                 try {
                     in.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+
         }
 
 

@@ -1,6 +1,7 @@
 package com.lvqz.test;
 
 import com.lvqz.mybatis.dao.IUserDao;
+import com.lvqz.mybatis.dao.impl.UserDaoImpl;
 import com.lvqz.mybatis.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -28,11 +29,9 @@ public class MybatisTest {
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             //3.创建SqlSessionFactory对象
             SqlSessionFactory factory = builder.build(in);
-            //4.使用SqlSession创建SqlSession对象
-            sqlSession = factory.openSession();
-            //5.使用SqlSession创建Dao对象
-            IUserDao userDao = sqlSession.getMapper(IUserDao.class);
-            //6.调用IUserDao的方法
+            //4.使用SqlSessionFactory创建UserDaoImpl对象
+            IUserDao userDao = new UserDaoImpl(factory);
+            //5.调用IUserDao的方法
             List<User> users = userDao.findAllUser();
             for (User user : users) {
                 System.out.println(user);
@@ -40,7 +39,6 @@ public class MybatisTest {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            sqlSession.close();
             if( in != null) {
                 try {
                     in.close();
