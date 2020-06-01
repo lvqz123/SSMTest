@@ -24,19 +24,19 @@ public class MapperProxy implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        //»ñÈ¡·½·¨Ãû
+        //1.è·å–æ–¹æ³•å
         String methodName = method.getName();
-        //»ñÈ¡·½·¨ËùÔÚµÄÀàÃû
+        //2.è·å–æ–¹æ³•æ‰€åœ¨çš„ç±»å
         String className = method.getDeclaringClass().getName();
-        //3.×éºÏkey
+        //3.ç»„åˆkey
         String key = className +"." +methodName;
-        //»ñÈ¡mappersÖĞµÄmapper
+        //4.è·å–mappersä¸­çš„mapper
         Mapper mapper = mappers.get(key);
-        //ÅĞ¶ÏmapperÊÇ·ñ´æÔÚ
+        //5.åˆ¤æ–­mapperæ˜¯å¦å­˜åœ¨
         if(mapper == null){
-            throw new IllegalArgumentException("´«ÈëµÄ²ÎÊıÓĞÎó");
+            throw new IllegalArgumentException("ä¼ å…¥çš„å‚æ•°æœ‰è¯¯");
         }
-        //µ÷ÓÃ¹¤¾ßÀàÖ´ĞĞ²éÑ¯ËùÓĞ
+        //è°ƒç”¨å·¥å…·ç±»æ‰§è¡ŒæŸ¥è¯¢æ‰€æœ‰
         return new Executor().selectList(mapper,conn);
     }
 }

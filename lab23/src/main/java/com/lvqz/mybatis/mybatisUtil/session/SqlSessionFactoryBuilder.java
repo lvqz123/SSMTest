@@ -11,13 +11,13 @@ import java.io.InputStream;
  * @date: 2020/5/31
  * @time: 21:35
  *
- * 用于创建一个SqlSessionFactory对象
+ * 鐢ㄤ簬鍒涘缓涓�涓猄qlSessionFactory瀵硅薄
  *
  */
 public class SqlSessionFactoryBuilder {
 
     /**
-     * 根据参数的字节输入流来构建一个SqlSessionFactory工厂
+     * 鏍规嵁鍙傛暟鐨勫瓧鑺傝緭鍏ユ祦鏉ユ瀯寤轰竴涓猄qlSessionFactory宸ュ巶
      * @param config
      * @return
      */

@@ -1,5 +1,6 @@
 package com.lvqz.mybatis.mybatisUtil.cfg;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Map;
  * @date: 2020/5/31
  * @time: 21:51
  *
- * MybatisµÄ×Ô¶¨ÒåÅäÖÃÀà
+ * Mybatisçš„è‡ªå®šä¹‰é…ç½®ç±»
  *
  */
 public class Configuration {
@@ -16,7 +17,7 @@ public class Configuration {
     private String url;
     private String username;
     private String password;
-    private Map<String,Mapper> mappers;
+    private Map<String,Mapper> mappers = new HashMap<String, Mapper>();
 
     public String getDriver() {
         return driver;
@@ -55,6 +56,6 @@ public class Configuration {
     }
 
     public void setMappers(Map<String, Mapper> mappers) {
-        this.mappers.putAll(mappers);//´Ë´¦ĞèÒªÊ¹ÓÃ×·¼ÓµÄ·½Ê½
+        this.mappers.putAll(mappers);//æ­¤å¤„éœ€è¦ä½¿ç”¨è¿½åŠ çš„æ–¹å¼
     }
 }

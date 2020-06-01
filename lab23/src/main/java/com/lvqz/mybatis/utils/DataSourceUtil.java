@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class DataSourceUtil {
 
     /**
-     * ÓÃÓÚ»ñÈ¡Ò»¸öÁ¬½Ó
+     * ç”¨äºè·å–ä¸€ä¸ªè¿æ¥
      * @return
      */
     public static Connection getConnection(Configuration configuration){

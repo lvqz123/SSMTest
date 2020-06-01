@@ -7,12 +7,12 @@ import java.io.InputStream;
  * @date: 2020/5/31
  * @time: 21:31
  *
- * 使用类加载器读取配置文件的类
+ * 浣跨敤绫诲姞杞藉櫒璇诲彇閰嶇疆鏂囦欢鐨勭被
  *
  */
 public class Resources {
     /**
-     * 根据传入的参数，加载对应配置文件
+     * 鏍规嵁浼犲叆鐨勫弬鏁帮紝鍔犺浇瀵瑰簲閰嶇疆鏂囦欢
      */
     public static InputStream getResourceAsStream(String filePath){
         return Resources.class.getClassLoader().getResourceAsStream(filePath);

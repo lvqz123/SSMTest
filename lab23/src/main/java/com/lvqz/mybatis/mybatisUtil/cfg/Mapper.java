@@ -5,17 +5,17 @@ package com.lvqz.mybatis.mybatisUtil.cfg;
  * @date: 2020/5/31
  * @time: 21:53
  *
- * ÓÃÓÚ·â×°Ö´ĞĞµÄSQLÓï¾äºÍ½á¹ûÀàĞÍµÄÈ«ÏŞ¶¨ÀàÃû
+ * ç”¨äºå°è£…æ‰§è¡Œçš„SQLè¯­å¥å’Œç»“æœç±»å‹çš„å…¨é™å®šç±»å
  *
  */
 public class Mapper {
 
     /**
-     * SQLÓï¾ä
+     * SQLè¯­å¥
      */
     private String queryString;
     /**
-     * È«ÏŞ¶¨ÀàÃû
+     * å…¨é™å®šç±»å
      */
     private String resultType;
 

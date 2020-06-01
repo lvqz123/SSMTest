@@ -8,15 +8,15 @@ package com.lvqz.mybatis.mybatisUtil.session;
 public interface SqlSession {
 
     /**
-     * ¸ù¾İ²ÎÊı´´½¨Ò»¸ö´úÀí¶ÔÏó
-     * @param daoInterfaceClass daoµÄ½Ó¿Ú×Ö½ÚÂë
+     * æ ¹æ®å‚æ•°åˆ›å»ºä¸€ä¸ªä»£ç†å¯¹è±¡
+     * @param daoInterfaceClass daoçš„æ¥å£å­—èŠ‚ç 
      * @param <T>
      * @return
      */
     <T> T getMapper(Class<T> daoInterfaceClass);
 
     /**
-     * ¹ØÁ÷
+     * å…³æµ
      */
     void close();
 
