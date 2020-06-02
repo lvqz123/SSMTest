@@ -85,7 +85,7 @@ public class XMLConfigBuilder {
                     System.out.println("使用的是XML");
                     //表示有resource属性，用的是XML
                     //取出属性的值
-                    String mapperPath = attribute.getValue();//获取属性的值"com/itheima/dao/IUserDao.xml"
+                    String mapperPath = attribute.getValue();//获取属性的值"com/lvqz/mybatis/dao/IUserDao.xml"
                     //把映射配置文件的内容获取出来，封装成一个map
                     Map<String, Mapper> mappers = loadMapperConfiguration(mapperPath);
                     //给configuration中的mappers赋值

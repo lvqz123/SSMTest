@@ -10,9 +10,9 @@
             <!--配置数据源（连接池）-->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"></property>
-                <property name="url" value="jdbc:mysql://47.95.239.50:3306/mybatis_test"></property>
-                <property name="username" value="lvqz"></property>
-                <property name="password" value="lvqz1726"></property>
+                <property name="url" value="jdbc:mysql://"></property>
+                <property name="username" value=""></property>
+                <property name="password" value=""></property>
             </dataSource>
         </environment>
     </environments>
