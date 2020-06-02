@@ -1,6 +1,7 @@
 package com.lvqz.mybatis.dao;
 
 import com.lvqz.mybatis.domain.User;
+import com.lvqz.mybatis.mybatisUtil.annotation.Select;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public interface IUserDao {
 
     //查询
+    @Select("select * from user")
     List<User> findAllUser();
 
 }

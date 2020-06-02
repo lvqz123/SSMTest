@@ -21,9 +21,9 @@ public class UserDaoImpl implements IUserDao {
     }
 
     public List<User> findAllUser() {
-        //Ê¹ÓÃ¹¤³§´´½¨session¶ÔÏó
+        //ä½¿ç”¨å·¥å‚åˆ›å»ºsessionå¯¹è±¡
         SqlSession session = factory.openSession();
-        //Ê¹ÓÃsessionÖ´ĞĞ²éÑ¯ËùÓĞ·½·¨
+        //ä½¿ç”¨sessionæ‰§è¡ŒæŸ¥è¯¢æ‰€æœ‰æ–¹æ³•
         List<User> users = session.selectList("com.lvqz.mybatis.dao.IUserDao.findAllUser");
         return users;
     }

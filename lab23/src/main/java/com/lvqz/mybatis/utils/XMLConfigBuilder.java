@@ -1,6 +1,7 @@
 package com.lvqz.mybatis.utils;
 
 //import com.itheima.mybatis.annotations.Select;
+import com.lvqz.mybatis.mybatisUtil.annotation.Select;
 import com.lvqz.mybatis.mybatisUtil.cfg.Configuration;
 import com.lvqz.mybatis.mybatisUtil.cfg.Mapper;
 import com.lvqz.mybatis.mybatisUtil.io.Resources;
@@ -90,7 +91,7 @@ public class XMLConfigBuilder {
                     Map<String, Mapper> mappers = loadMapperConfiguration(mapperPath);
                     //给configuration中的mappers赋值
                     cfg.setMappers(mappers);
-                }/*else{
+                }else{
                     System.out.println("使用的是注解");
                     //表示没有resource属性，用的是注解
                     //获取class属性的值
@@ -99,7 +100,7 @@ public class XMLConfigBuilder {
                     Map<String,Mapper> mappers = loadMapperAnnotation(daoClassPath);
                     //给configuration中的mappers赋值
                     cfg.setMappers(mappers);
-                }*/
+                }
             }
             //返回Configuration
             return cfg;
@@ -168,7 +169,7 @@ public class XMLConfigBuilder {
      * @param daoClassPath
      * @return
      */
-    /*private static Map<String,Mapper> loadMapperAnnotation(String daoClassPath)throws Exception{
+    private static Map<String,Mapper> loadMapperAnnotation(String daoClassPath)throws Exception{
         //定义返回值对象
         Map<String,Mapper> mappers = new HashMap<String, Mapper>();
 
@@ -212,7 +213,7 @@ public class XMLConfigBuilder {
             }
         }
         return mappers;
-    }*/
+    }
 
 
 
