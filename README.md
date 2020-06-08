@@ -64,5 +64,7 @@ lab21：使用注解配置Mybatis的入门案例
 
 lab22：Mybatis也可以使用DaoImpl实现，不过开发用不常用。
 
+lab23：手撕Mybatis源码，xml配置和注解配置
+
 
 
