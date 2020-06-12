@@ -26,4 +26,8 @@ public class Producer{
         System.out.println("提供售后服务，并拿到钱" + money);
     }
 
+    public void testString(String str){
+        System.out.println("测试字符串" + str);
+    }
+
 }

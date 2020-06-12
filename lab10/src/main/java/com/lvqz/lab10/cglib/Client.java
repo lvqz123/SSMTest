@@ -61,13 +61,21 @@ public class Client {
              */
             public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
                 Object returnValue = null;
-                Float money = (Float) args[0];
+
                 //厂家转给代理去卖之后自己能挣多少（原本10000，现在8000,2000被代理中间商赚了差价）
-                returnValue = method.invoke(producer, money * 0.8f);
+                if(args[0] instanceof Float){
+                    Float money = (Float) args[0];
+                    returnValue = method.invoke(producer, money * 0.8f);
+                }else{
+                    returnValue = method.invoke(producer, args);
+                }
                 return returnValue;
             }
         });
         proxyProducer.saleProduce(10000f);
+        proxyProducer.afterService(1000f);
+        proxyProducer.testString("aaa");
+
 
 
     }

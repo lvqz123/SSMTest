@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.lvqz.mybatis.dao.IUserDao">
+
+
+    <resultMap id="userResultMap" type="com.lvqz.mybatis.domain.User">
+        <!--主键标签使用id，非主键使用result-->
+        <id column="id" property="userId"></id>
+        <result column="username" property="userName"></result>
+        <result column="birthday" property="userBirthday"></result>
+        <result column="sex" property="userSex"></result>
+        <result column="address" property="userAddress"></result>
+    </resultMap>
+
+    <!--
+        以下的配置都是在数据库的字段和实体类的字段名相匹配的时候，假如不匹配的时候呢？
+        结果：不匹配的时候，除了username，别的都查不到了，都为null。 那为什么username还是能查到呢？
+        因为在windows系统中，不区分大小写，但是linux系统中，会严格区分大小写的。
+        解决办法：
+        1.起别名方法，以查询所有为例子
+            select id as userId,username as userName,birthday as userBirthday,sex as userSex,address as userAddress from user
+            缺点：sql长度太冗余，而且不利于后期维护
+        2.单独配置一个resultType
+    -->
+    <!--配置查询所有，使用自定义resultMap-->
+    <select id="findAllUser" resultMap="userResultMap">
+        select * from user
+        <!--select id as userId,username as userName,birthday as userBirthday,sex as userSex,address as userAddress from user-->
+    </select>
+
+    <!--配置查询所有-->
+    <!--<select id="findAllUser" resultType="com.lvqz.mybatis.domain.User">
+        &lt;!&ndash;select * from user&ndash;&gt;
+        select id as userId,username as userName,birthday as userBirthday,sex as userSex,address as userAddress from user
+    </select>-->
+
+
+    <!--配置查询一条数据-->
+    <!-- parameterType为单一某个属性时，下面的占位符#{}中内容可以随意写，不一定要与user中变量一致 -->
+    <select id="findById" parameterType="INTEGER" resultType="com.lvqz.mybatis.domain.User">
+        select * from user where id = #{id}
+    </select>
+
+    <!--配置模糊查询-->
+    <select id="findByName" parameterType="string" resultType="com.lvqz.mybatis.domain.User">
+          <!-- 推荐使用第一种写法 相当于PreStatement 预编译 -->
+          select * from user where username like #{username}
+
+          <!-- 第二种写法相当于使用Statement -->
+          <!--select * from user where username like '%${value}%'-->
+    </select>
+
+
+    <!--配置保存用户-->
+    <insert id="saveUser" parameterType="com.lvqz.mybatis.domain.User">
+        <!-- 配置插入操作后，获取插入数据的id -->
+        <selectKey keyProperty="userId" keyColumn="id" resultType="int" order="AFTER">
+          select last_insert_id();
+        </selectKey>
+        insert into user(username,birthday,sex,address) values (#{userName},#{userBirthday},#{userSex},#{userAddress})
+    </insert>
+
+    <!--配置修改用户-->
+    <update id="updateUser" parameterType="com.lvqz.mybatis.domain.User">
+        update user set username = #{username},birthday = #{birthday},sex = #{sex},address = #{address} where id = #{id};
+    </update>
+
+    <!--配置删除用户-->
+    <delete id="deleteUser" parameterType="INTEGER">
+        delete from user where id = #{uid}
+    </delete>
+
+    <!--配置查询总条数-->
+    <select id="findTotal" resultType="int">
+        select count(*) from user ;
+    </select>
+
+
+
+
+
+</mapper>
