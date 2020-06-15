@@ -10,10 +10,10 @@
     <!--配置别名-->
     <typeAliases>
         <!--使用typeAlias用于配置别名，type配置全限定类名，alias配置别名，当指定了别名就不再区分大小写-->
-        <typeAlias type="com.lvqz.mybatis.domain.User" alias="user"></typeAlias>
+        <!--<typeAlias type="com.lvqz.mybatis.domain.User" alias="user"></typeAlias>-->
 
         <!--使用package配置之后，会自动扫描包下的所有实体类，别名按照类名来自动配置-->
-        <!--<package name="com.lvqz.mybatis.domain"></package>-->
+        <package name="com.lvqz.mybatis.domain"></package>
     </typeAliases>
 
     <!--配置环境-->

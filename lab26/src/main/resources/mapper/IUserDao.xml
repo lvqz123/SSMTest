@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.lvqz.mybatis.dao.IUserDao">
+
+
+    <resultMap id="userResultMap" type="user">
+        <!--主键标签使用id，非主键使用result-->
+        <!--column配的是数据库的字段名称，property配的是相对应的实体类的变量名-->
+        <id column="id" property="userId"></id>
+        <result column="username" property="userName"></result>
+        <result column="birthday" property="userBirthday"></result>
+        <result column="sex" property="userSex"></result>
+        <result column="address" property="userAddress"></result>
+    </resultMap>
+
+    <!--配置查询所有，使用自定义resultMap-->
+    <select id="findAllUser" resultMap="userResultMap">
+        select * from user
+        <!--select id as userId,username as userName,birthday as userBirthday,sex as userSex,address as userAddress from user-->
+    </select>
+
+
+    <!--配置查询一条数据-->
+    <!-- parameterType为单一某个属性时，下面的占位符#{}中内容可以随意写，不一定要与user中变量一致 -->
+    <select id="findById" parameterType="INTEGER" resultMap="userResultMap" >
+        select * from user where id = #{id}
+    </select>
+
+
+
+
+
+
+
+
+</mapper>

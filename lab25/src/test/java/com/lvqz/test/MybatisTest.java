@@ -1,6 +1,7 @@
 package com.lvqz.test;
 
 import com.lvqz.mybatis.dao.IUserDao;
+import com.lvqz.mybatis.domain.QueryVo;
 import com.lvqz.mybatis.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +13,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -114,5 +116,42 @@ public class MybatisTest {
     public void testFindTotal() {
         int total = userDao.findTotal();
         System.out.println(total);
+    }
+
+    @Test
+    public void testFindByQueryVo() {
+        QueryVo queryVo = new QueryVo();
+        User user = new User();
+        user.setUserName("%王%");
+        queryVo.setUser(user);
+        List<User> users = userDao.findByQueryVo(queryVo);
+        for (User user1 : users) {
+            System.out.println(user1);
+        }
+    }
+
+    @Test
+    public void testFindByCondition() {
+        User user = new User();
+        user.setUserName("老王");
+//        user.setUserSex("女");
+        List<User> users = userDao.findByCondition(user);
+        for (User user1 : users) {
+            System.out.println(user1);
+        }
+    }
+
+    @Test
+    public void testFindByIds() {
+        QueryVo queryVo = new QueryVo();
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(41);
+        list.add(46);
+        list.add(56);
+        queryVo.setIds(list);
+        List<User> users = userDao.findByIds(queryVo);
+        for (User user1 : users) {
+            System.out.println(user1);
+        }
     }
 }
